@@ -1,0 +1,108 @@
+/*
+===============================================================================
+Data Quality Validation
+===============================================================================
+Script Purpose:
+    This script executes a series of validation steps to ensure the integrity, 
+    accuracy, and consistency of data within the silver layer.
+
+Usage Notes:
+    - Execute this validation script after loading the silver layer.
+
+ToDo:
+Finish validation of crm_sales details
+Build validation of missing two tables
+===============================================================================
+*/
+
+
+-- ====================================================================
+-- Validating 'silver.crm_cust_info'
+-- ====================================================================
+-- Checking NULLs and duplicates for primary key
+-- Expectation: no results
+SELECT 
+    cst_id,
+    COUNT(*) AS occurrence_count
+FROM silver.crm_cust_info
+GROUP BY cst_id
+HAVING COUNT(*) > 1 OR cst_id IS NULL;
+
+
+-- Check for unwanted spaces in string values
+-- Expectation: no results
+SELECT *
+FROM silver.crm_cust_info
+WHERE cst_firstname != TRIM(cst_firstname);
+
+
+-- Data consistency
+-- Expectation: three results
+SELECT cst_marital_status, COUNT(*) AS occurance
+FROM silver.crm_cust_info
+GROUP BY cst_marital_status;
+
+
+-- ====================================================================
+-- Validating 'silver.crm_sales_details'
+-- ====================================================================
+--
+SELECT 
+    sls_ord_num,
+    COUNT(*) AS occurrence_count
+FROM bronze.crm_sales_details
+GROUP BY sls_ord_num
+HAVING COUNT(*) > 1 OR sls_ord_num IS NULL;
+
+
+-- Check for unwanted spaces in string values
+-- Expectation: no results
+SELECT *
+FROM bronze.crm_sales_details
+WHERE cst_firstname != TRIM(cst_firstname);
+
+
+-- Data consistency
+-- Cardinality of three expected
+SELECT cst_marital_status, COUNT(*) AS occurance
+FROM bronze.crm_sales_details
+GROUP BY cst_marital_status;
+
+-- Invalid date orders
+-- Order date must be before shipping and due date
+SELECT * FROM bronze.crm_sales_details
+WHERE sls_order_dt > sls_due_dt OR sls_order_dt > sls_ship_dt
+
+-- Sale price, quantity, and product price not matching check
+-- Expected: no results
+SELECT * FROM silver.crm_sales_details
+WHERE sls_sales != (sls_quantity * sls_price) OR 
+sls_sales IS NULL OR sls_quantity IS NULL OR sls_price IS NULL OR
+sls_sales <= 0 OR sls_price <= 0 or sls_quantity <= 0
+
+-- ====================================================================
+-- Validating 'silver.erp_cust_az12'
+-- ====================================================================
+-- check valid gender
+-- Expected: three results
+SELECT DISTINCT GEN
+FROM silver.erp_cust_az12
+
+-- check valid bdates
+-- Expected: no results
+SELECT * 
+FROM silver.erp_cust_az12
+WHERE bdate > GETDATE()
+
+-- check valid gender
+-- expected: three results
+SELECT DISTINCT gen
+FROM silver.erp_cust_az12
+
+-- ====================================================================
+-- Validating 'silver.erp_loc_a101'
+-- ====================================================================
+-- Data constitency check
+-- Expected: no duplicate, NULL or nonsensical results
+SELECT DISTINCT CNTRY
+FROM silver.erp_loc_a101
