@@ -4,7 +4,7 @@ Stored Procedure: Silver Layer Load (Bronze → Silver)
 ===============================================================================
 Script Purpose:
     This stored procedure executes the ETL workflow that transfers and refines data 
-    from the 'bronze' schema into the 'silver' schema.
+    from the Bronze layer into the Silver layer.
 
     Operations Performed:
         - Clears existing data in the Silver tables prior to reload.
