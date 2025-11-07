@@ -15,6 +15,7 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 ---
 
 ## Table: `gold.customers_dim`
+**Description:** A dimension table that stores enriched customer profile data, including personal details, demographics, and origin from both CRM and ERP systems.
 
 | Column Name          | Data Type | Description                                              
 |----------------------|-----------|------------------------------------------------------------------
@@ -32,6 +33,7 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 ---
 
 ## Table: `gold.sales.fact`
+**Description:** A dimension table containing product information such as name, category, pricing, and lifecycle dates. Combines product metadata from CRM and ERP sources to support product-level analysis.
 
 | Column Name          | Data Type | Description                                      | 
 |----------------------|-----------|--------------------------------------------------|
@@ -48,6 +50,7 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 ---
 
 ## Table: `gold.products_dim`
+**Description:** The central fact table that captures sales transactions, including order dates, quantities, and pricing. Linked to product and customer dimensions to enable time-based and customer/product-level analysis..
 
 | Column Name              | Data Type | Description                                         | 
 |--------------------------|-----------|-----------------------------------------------------|
