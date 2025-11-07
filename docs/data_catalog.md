@@ -1,11 +1,11 @@
 
-# 📦 Bicycle Store Data Catalog – Star Schema Documentation
+#  B Store Data Catalog 
 
-This data catalog documents the **Gold Layer** of the bicycle store data warehouse, modeled using a **Star Schema**. It contains one central **fact table** and two related **dimension tables**: `customers`, `products`, and `sales`.
+This data catalog documents the **Gold Layer** of the b store data warehouse, modeled using a **Star Schema**. It contains one central **fact table** `sales` and two related **dimension tables**: `customers` and `products`. The Gold Layer represents business-level data and is structured to enable reporting and analytics.
 
 ---
 
-## ⭐ Star Schema Overview
+## Star Schema Overview
 
 - **Fact Table**: `gold.sales.fact` – contains transactional sales data.
 - **Dimension Tables**:
@@ -14,59 +14,59 @@ This data catalog documents the **Gold Layer** of the bicycle store data warehou
 
 ---
 
-## 📄 Table: `gold.customers_dim`
+## Table: `gold.customers_dim`
 
-| Column Name          | Data Type | Description                                      | Example        |
-|----------------------|-----------|--------------------------------------------------|----------------|
-| `customer_key_surr`  | ?         | Surrogate key for the customer (PK)              | 101            |
-| `customer_id`        | ?         | Natural key or business identifier               | CUST0001       |
-| `customer_number`    | ?         | Possibly a store-specific number                 | 558392         |
-| `first_name`         | string?   | Customer's first name                            | John           |
-| `last_name`          | string?   | Customer's last name                             | Doe            |
-| `marital_status`     | string?   | Marital status of customer                       | Married        |
-| `birthdate`          | date?     | Customer's date of birth                         | 1985-07-21     |
-| `gender`             | string?   | Gender                                           | Male           |
-| `country`            | string?   | Country of residence                             | Netherlands    |
-| `record_create_date` | date?     | Date the customer was registered (ETL metadata)  | 2021-04-01     |
-
----
-
-## 📄 Table: `gold.sales.fact`
-
-| Column Name          | Data Type | Description                                      | Example        |
-|----------------------|-----------|--------------------------------------------------|----------------|
-| `order_number`       | ?         | Unique ID for each order                         | ORD123456      |
-| `product_key_surr`   | ?         | FK to product dimension                          | 205            |
-| `customer_key_surr`  | ?         | FK to customer dimension                         | 101            |
-| `order_date`         | date?     | Date when the order was placed                   | 2023-07-10     |
-| `order_ship_date`    | date?     | Date when the order was shipped                  | 2023-07-12     |
-| `order_due_date`     | date?     | Promised delivery date                           | 2023-07-14     |
-| `sale_price`         | decimal?  | Total amount of the sale                         | 249.99         |
-| `sale_quantity`      | int?      | Number of units sold                             | 2              |
-| `item_price`         | decimal?  | Price per individual item                        | 124.99         |
+| Column Name          | Data Type | Description                                              
+|----------------------|-----------|------------------------------------------------------------------
+| `customer_key_surr`  | INT         | Surrogate key for the customer (PK)              | 
+| `customer_id`        | INT         | Natural key or business identifier               | 
+| `customer_number`    | INT         | Possibly a store-specific number                 | 
+| `first_name`         | NVARCHAR(50)   | Customer's first name                            |
+| `last_name`          | NVARCHAR(50)   | Customer's last name                             |
+| `marital_status`     | NVARCHAR(50)   | Marital status of customer ('Married', 'Single')                       | 
+| `birthdate`          | DATE     | Customer's date of birth, formatted as YYYY-MM-DD                         | 
+| `gender`             | NVARCHAR(50)   | Gender ('Male', 'Female', 'n/a')                                           |
+| `country`            | NVARCHAR(50)   | Country of residence                             | 
+| `record_create_date` | DATE     | Date the customer was registered   | 
 
 ---
 
-## 📄 Table: `gold.products_dim`
+## Table: `gold.sales.fact`
 
-| Column Name              | Data Type | Description                                         | Example        |
-|--------------------------|-----------|-----------------------------------------------------|----------------|
-| `product_key_surr`       | ?         | Surrogate key for product (PK)                      | 205            |
-| `product_id`             | ?         | Natural/business identifier                         | PROD001        |
-| `category_id`            | ?         | Reference to category                               | CAT10          |
-| `product_number`         | string?   | Internal product number                             | BIK-29382      |
-| `product_name`           | string?   | Name of the product                                 | Mountain Bike  |
-| `product_cost`           | decimal?  | Cost to produce or acquire the product              | 99.50          |
-| `product_line`           | string?   | Product line classification                         | Sports         |
-| `product_category`       | string?   | High-level category                                 | Bikes          |
-| `product_subcategory_name` | string? | Subcategory name                                    | Mountain       |
-| `maintenance`            | boolean?  | Indicates if product includes maintenance service   | false          |
-| `product_start_sell_date`| date?     | Start date for product being on sale                | 2022-01-01     |
-| `product_end_sell_date`  | date?     | End date (if retired) of product                    | NULL           |
+| Column Name          | Data Type | Description                                      | 
+|----------------------|-----------|--------------------------------------------------|
+| `order_number`       | NVARCHAR(50)         | Unique ID for each order                         | 
+| `product_key_surr`   | INT         | Foreign (surrogate) key to product dimension                          | 
+| `customer_key_surr`  | INT         | Foreign (surrogate) key to customer dimension                         | 
+| `order_date`         | DATE     | Date when the order was placed                   |
+| `order_ship_date`    | DATE     | Date when the order was shipped                  | 
+| `order_due_date`     | DATE     | Promised delivery date                           | 
+| `sale_price`         | INT  | Total amount of the sale                         | 
+| `sale_quantity`      | INT      | Number of units sold                             | 
+| `item_price`         | INT  | Price per individual item                        | 
 
 ---
 
-## 📌 Notes
+## Table: `gold.products_dim`
+
+| Column Name              | Data Type | Description                                         | 
+|--------------------------|-----------|-----------------------------------------------------|
+| `product_key_surr`       | INT         | Surrogate key for product (PK)                    | 
+| `product_id`             |INT        | Natural/business identifier                         | 
+| `category_id`            | NVARCHAR(50)         | Reference to category                         | 
+| `product_number`         | NVARCHAR(50)   | Internal product number                             | 
+| `product_name`           | NVARCHAR(50)   | Name of the product                                 | 
+| `product_cost`           | INT  | Cost to produce or acquire the product              | 
+| `product_line`           | NVARCHAR(50)   | Product line classification                         | 
+| `product_category`       | NVARCHAR(50)   | High-level category                                 | 
+| `product_subcategory_name` | NVARCHAR(50) | Subcategory name                                    | 
+| `maintenance`            | NVARCHAR(50)  | Indicates if product includes maintenance service ('Yes', 'No')   | 
+| `product_start_sell_date`| DATE     | Start date for product being on sale                | 
+| `product_end_sell_date`  | DATE     | End date (if retired) of product                    | 
+
+---
+
+## Notes
 
 - Foreign keys in the `gold.sales.fact` table link to surrogate keys in the dimension tables.
 - `record_create_date` and `product_start_sell_date` can be useful for historical tracking or SCD (slowly changing dimension) analysis.
