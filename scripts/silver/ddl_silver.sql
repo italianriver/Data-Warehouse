@@ -2,7 +2,7 @@
 Welcome to the Silver Layer Table Creation Script
 
 Script Purpose:
-This script creates all tables required in the 'silver' schema for the
+This script creates all tables required in the Silver layer for the
 Data Warehouse. The silver layer represents the cleaned and standardised
 data zone, where raw bronze data is validated, transformed, and prepared
 for analytical use in the gold layer.
