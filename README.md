@@ -1,47 +1,37 @@
-# sql-data-warehouse
-Designing and implementing a SQL Server–based modern data warehouse, including ETL workflows, data modelling, and analytics.
+# SQL Server Data Warehouse Project
 
-
-# 🏗️ SQL Server Data Warehouse Project
-
-## 👋 Welcome  
+## Welcome  
 Welcome to my **SQL Data Warehouse** project!  
 This repository showcases my work in designing and building a **modern data warehouse** using **SQL Server** — from raw data ingestion to business-ready analytics.  
-The goal of this project is to demonstrate end-to-end **data engineering** skills, including ETL processes, data modelling, and analytical reporting.
+The goal of this project is to demonstrate end-to-end **data engineering** skills, including ETL processes, data modelling, and provide an analytics ready data layer.
 
 ---
 
-## 🧱 Project Architecture  
-The solution follows the **Medallion Architecture** (Bronze → Silver → Gold) to ensure data quality, scalability, and clarity across the pipeline.
+## Project Architecture  
+The data architecture follows the **Medallion Architecture** Bronze → Silver → Gold.
 
-### 🥉 Bronze Layer  
+![data architecture overview](docs/data_architecture_overview.png)
+
+### Bronze Layer  
 - Ingests raw data from **ERP** and **CRM** systems stored as CSV files.  
 - Loads data into SQL Server tables without transformations (as-is).  
 - Ensures full data capture and traceability of source data.
 
-### 🥈 Silver Layer  
+### Silver Layer  
 - Cleanses and standardises data using **stored procedures**.  
-- Applies transformations such as:  
-  - Data cleansing and normalisation  
-  - Derived columns  
-  - Data enrichment  
+- Applies transformations such as:  data cleansing and normalisation, computed columns and data enrichment  
 - Produces a consistent, reliable dataset ready for business integration.
 
-### 🥇 Gold Layer  
+### Gold Layer  
 - Integrates business logic and performs aggregations.  
-- Builds analytical data models such as **star schemas** and **flat tables**.  
+- Builds business-ready data into a star schema to support reporting and analytics 
 - Delivers business-ready views for:  
-  - **BI & reporting**  
-  - **Ad-hoc SQL queries**  
-  - **Machine learning**  
-
-📊 *See the architecture diagram above for a visual overview.*
 
 ---
 
-## ⚙️ Project Requirements  
+## Project Requirements  
 
-### 🧩 Building the Data Warehouse (Data Engineering)
+### Building the Data Warehouse (Data Engineering)
 **Objective:**  
 Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
 
@@ -54,7 +44,7 @@ Develop a modern data warehouse using SQL Server to consolidate sales data, enab
 
 ---
 
-### 📊 Analytics & Reporting (Data Analysis)
+### Analytics & Reporting (Data Analysis)
 **Objective:**  
 Develop SQL-based analytics to deliver actionable insights into:  
 - Customer behaviour  
@@ -65,6 +55,6 @@ These insights help stakeholders track key business metrics and support strategi
 
 ---
 
-## 🙋 About Me  
-I’m a **recent graduate** with a strong interest in **data engineering** and a passion for building robust, scalable data solutions.  
-This project reflects my hands-on approach to learning modern data practices — from **ETL development**
+## About Me
+
+I'm a recent graduate who is motivated by turning raw data into meaningful insights through clean, efficient data pipelines. I started this project to **deepen my understanding and apply core SQL skills** essential to **end-to-end data engineering**, while also **strengthening my experience in data modeling**. 
