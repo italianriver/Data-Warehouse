@@ -2,7 +2,7 @@
 Welcome to the Bronze Layer Table Creation Script
 
 Script Purpose:
-This script creates all tables required in the 'bronze' schema for the
+This script creates all tables required in the Bronze layer for the
 Data Warehouse. The bronze layer serves as the raw data storage area,
 holding data ingested directly from source systems (CRM and ERP) before
 any transformation or cleaning takes place.
