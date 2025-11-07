@@ -1,7 +1,7 @@
 
 #  B Store Data Catalog 
 
-This data catalog documents the **Gold Layer** of the b store data warehouse, modeled using a **Star Schema**. It contains one central **fact table** `sales` and two related **dimension tables**: `customers` and `products`. The Gold Layer represents business-level data and is structured to enable reporting and analytics.
+This data catalog documents the **Gold Layer** of the B Store data warehouse, modeled using a **Star Schema**. It contains one central **fact table** `sales` and two related **dimension tables**: `customers` and `products`. The Gold Layer represents business-level data and is structured to enable reporting and analytics.
 
 ---
 
@@ -24,9 +24,9 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 | `customer_number`    | INT         | Possibly a store-specific number                 | 
 | `first_name`         | NVARCHAR(50)   | Customer's first name                            |
 | `last_name`          | NVARCHAR(50)   | Customer's last name                             |
-| `marital_status`     | NVARCHAR(50)   | Marital status of customer ('Married', 'Single')                       | 
-| `birthdate`          | DATE     | Customer's date of birth, formatted as YYYY-MM-DD                         | 
-| `gender`             | NVARCHAR(50)   | Gender ('Male', 'Female', 'n/a')                                           |
+| `marital_status`     | NVARCHAR(50)   | Marital status of customer ('Married', 'Single') | 
+| `birthdate`          | DATE     | Customer's date of birth, formatted as YYYY-MM-DD      | 
+| `gender`             | NVARCHAR(50)   | Gender ('Male', 'Female', 'n/a')                 |
 | `country`            | NVARCHAR(50)   | Country of residence                             | 
 | `record_create_date` | DATE     | Date the customer was registered   | 
 
@@ -37,15 +37,15 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 
 | Column Name          | Data Type | Description                                      | 
 |----------------------|-----------|--------------------------------------------------|
-| `order_number`       | NVARCHAR(50)         | Unique ID for each order                         | 
-| `product_key_surr`   | INT         | Foreign (surrogate) key to product dimension                          | 
-| `customer_key_surr`  | INT         | Foreign (surrogate) key to customer dimension                         | 
+| `order_number`       | NVARCHAR(50)         | Unique ID for each order              | 
+| `product_key_surr`   | INT         | Foreign (surrogate) key to product dimension  | 
+| `customer_key_surr`  | INT         | Foreign (surrogate) key to customer dimension | 
 | `order_date`         | DATE     | Date when the order was placed                   |
 | `order_ship_date`    | DATE     | Date when the order was shipped                  | 
 | `order_due_date`     | DATE     | Promised delivery date                           | 
-| `sale_price`         | INT  | Total amount of the sale                         | 
+| `sale_price`         | INT  | Total amount of the sale                             | 
 | `sale_quantity`      | INT      | Number of units sold                             | 
-| `item_price`         | INT  | Price per individual item                        | 
+| `item_price`         | INT  | Price per individual item                            | 
 
 ---
 
@@ -59,7 +59,7 @@ This data catalog documents the **Gold Layer** of the b store data warehouse, mo
 | `category_id`            | NVARCHAR(50)         | Reference to category                         | 
 | `product_number`         | NVARCHAR(50)   | Internal product number                             | 
 | `product_name`           | NVARCHAR(50)   | Name of the product                                 | 
-| `product_cost`           | INT  | Cost to produce or acquire the product              | 
+| `product_cost`           | INT  | Cost to produce or acquire the product                        | 
 | `product_line`           | NVARCHAR(50)   | Product line classification                         | 
 | `product_category`       | NVARCHAR(50)   | High-level category                                 | 
 | `product_subcategory_name` | NVARCHAR(50) | Subcategory name                                    | 
