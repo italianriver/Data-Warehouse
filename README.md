@@ -67,7 +67,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 
 
 
-## Star Schema Overview
+### Star Schema Overview
 
 - **Fact Table**: `gold.sales.fact` – contains transactional sales data.
 - **Dimension Tables**:
@@ -76,7 +76,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 
 
 
-## Table: `gold.customers_dim`
+### Table: `gold.customers_dim`
 **Description:** A dimension table that stores enriched customer profile data, including personal details, demographics, and origin from both CRM and ERP systems.
 
 | Column Name          | Data Type | Description                                              
@@ -94,7 +94,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 
 
 
-## Table: `gold.sales.fact`
+### Table: `gold.sales.fact`
 **Description:** A dimension table containing product information such as name, category, pricing, and lifecycle dates. Combines product metadata from CRM and ERP sources to support product-level analysis.
 
 | Column Name          | Data Type | Description                                      | 
@@ -111,7 +111,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 
 
 
-## Table: `gold.products_dim`
+### Table: `gold.products_dim`
 **Description:** The central fact table that captures sales transactions, including order dates, quantities, and pricing. Linked to product and customer dimensions to enable time-based and customer/product-level analysis..
 
 | Column Name              | Data Type | Description                                         | 
@@ -131,7 +131,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 
 
 
-## Notes
+### Notes
 
 - Foreign keys in the `gold.sales.fact` table link to surrogate keys in the dimension tables.
 - `record_create_date` and `product_start_sell_date` can be useful for historical tracking or SCD (slowly changing dimension) analysis.
