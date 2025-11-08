@@ -82,8 +82,8 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 | Column Name          | Data Type | Description                                              
 |----------------------|-----------|------------------------------------------------------------------
 | `customer_key_surr`  | INT         | Surrogate key for the customer (PK)              | 
-| `customer_id`        | INT         | Natural key or business identifier               | 
-| `customer_number`    | INT         | Possibly a store-specific number                 | 
+| `customer_id`        | INT         | Unique numerical customer identifier               | 
+| `customer_number`    | INT         | Customer number used for tracking                 | 
 | `first_name`         | NVARCHAR(50)   | Customer's first name                            |
 | `last_name`          | NVARCHAR(50)   | Customer's last name                             |
 | `marital_status`     | NVARCHAR(50)   | Marital status of customer ('Married', 'Single') | 
@@ -104,7 +104,7 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 | `customer_key_surr`  | INT         | Foreign (surrogate) key to customer dimension | 
 | `order_date`         | DATE     | Date when the order was placed                   |
 | `order_ship_date`    | DATE     | Date when the order was shipped                  | 
-| `order_due_date`     | DATE     | Promised delivery date                           | 
+| `order_due_date`     | DATE     | Order's payment due date                           | 
 | `sale_price`         | INT  | Total amount of the sale                             | 
 | `sale_quantity`      | INT      | Number of units sold                             | 
 | `item_price`         | INT  | Price per individual item                            | 
@@ -117,11 +117,11 @@ This data catalogue documents the **Gold Layer** of the B Store data warehouse, 
 | Column Name              | Data Type | Description                                         | 
 |--------------------------|-----------|-----------------------------------------------------|
 | `product_key_surr`       | INT         | Surrogate key for product (PK)                    | 
-| `product_id`             |INT        | Natural/business identifier                         | 
+| `product_id`             |INT        | Unique numerical product identifier                         | 
 | `category_id`            | NVARCHAR(50)         | Reference to category                         | 
-| `product_number`         | NVARCHAR(50)   | Internal product number                             | 
+| `product_number`         | NVARCHAR(50)   | Internal product number for inventory                            | 
 | `product_name`           | NVARCHAR(50)   | Name of the product                                 | 
-| `product_cost`           | INT  | Cost to produce or acquire the product                        | 
+| `product_cost`           | INT  | Unit price for individual item                        | 
 | `product_line`           | NVARCHAR(50)   | Product line classification                         | 
 | `product_category`       | NVARCHAR(50)   | High-level category                                 | 
 | `product_subcategory_name` | NVARCHAR(50) | Subcategory name                                    | 
