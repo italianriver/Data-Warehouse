@@ -2,8 +2,8 @@
 
 ## Welcome  
 Welcome to my **SQL Data Warehouse** project!  
-This repository showcases my work in designing and building a **modern data warehouse** using **SQL Server** — from raw data ingestion to business-ready analytics.  
-The goal of this project is to demonstrate end-to-end **data engineering** skills, including ETL processes, data modelling, and provide an analytics-ready data layer.
+This repository showcases my work in designing and building a **modern data warehouse** using **Microsoft SQL Server**, from raw data ingestion to business-ready analytics.  
+The goal of this project is to demonstrate fundamental end-to-end **data engineering** skills using SQL, ETL processes, data modelling, and provide an analytics-ready data layer.
 
 ---
 
