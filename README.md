@@ -38,7 +38,7 @@ The data architecture follows the **Medallion Architecture** Bronze → Silver �
 Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
 
 **Specifications:**  
-- **Data Sources:** Import data from two systems — ERP and CRM — provided as CSV files.  
+- **Data Sources:** Import data from two systems: ERP and CRM, provided as CSV files.  
 - **Data Quality:** Cleanse and fix data quality issues before analysis.  
 - **Integration:** Combine both sources into a unified, analysis-ready model.  
 - **Scope:** Focus only on the latest dataset (no historisation).  
